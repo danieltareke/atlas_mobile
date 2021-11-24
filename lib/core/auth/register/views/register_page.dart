@@ -1,3 +1,4 @@
+import 'package:atlas/core/auth/register/views/register_view.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -5,6 +6,6 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return RegisterView();
   }
 }

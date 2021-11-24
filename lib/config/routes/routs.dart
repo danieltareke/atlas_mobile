@@ -1,11 +1,11 @@
 import 'package:atlas/core/auth/login/bloc/login_bloc.dart';
-import 'package:atlas/core/auth/login/views/login.dart';
+import 'package:atlas/core/auth/login/views/login_page.dart';
 import 'package:atlas/core/auth/register/bloc/register_bloc.dart';
-import 'package:atlas/core/auth/register/views/register.dart';
+import 'package:atlas/core/auth/register/views/register_page.dart';
 import 'package:atlas/core/home/bloc/home_bloc.dart';
 import 'package:atlas/core/home/views/home.dart';
 import 'package:atlas/core/splash/bloc/splash_bloc.dart';
-import 'package:atlas/core/splash/splash.dart';
+import 'package:atlas/core/splash/views/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

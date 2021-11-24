@@ -1,7 +1,7 @@
 import 'package:atlas/config/routes/routs.dart';
+import 'package:atlas/core/splash/views/splash_page.dart';
 import 'package:flutter/material.dart';
-import 'package:bloc/bloc.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(App());
 
@@ -18,6 +18,9 @@ class _AppState extends State<App> {
     return MaterialApp(
       title: 'WeChat',
       onGenerateRoute: _router.onGenerateRoute,
+      home: SplashPage(),
+      theme: ThemeData(textTheme: GoogleFonts.robotoTextTheme()),
+      debugShowCheckedModeBanner: false,
     );
   }
 
