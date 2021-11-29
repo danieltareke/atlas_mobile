@@ -27,12 +27,10 @@ class _AtlasPasswordFormFieldState extends State<AtlasPasswordFormField> {
         controller: widget.myController,
         keyboardType: widget.textInputType,
         obscureText: widget.obscureText,
-        style: TextStyle(fontSize: 18.0, color: Colors.deepPurple),
+        style: TextStyle(fontSize: 18.0),
         decoration: InputDecoration(
           hintText: widget.hint,
-          hintStyle: TextStyle(color: Colors.grey),
           filled: true,
-          fillColor: Colors.white70,
           suffixIcon: IconButton(
             icon: Icon(
                 widget.obscureText ? Icons.visibility : Icons.visibility_off),

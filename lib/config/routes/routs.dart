@@ -2,6 +2,7 @@ import 'package:atlas/core/auth/login/bloc/login_bloc.dart';
 import 'package:atlas/core/auth/login/views/login_page.dart';
 import 'package:atlas/core/auth/register/bloc/register_bloc.dart';
 import 'package:atlas/core/auth/register/views/register_page.dart';
+import 'package:atlas/core/auth/sms_login/views/sms_login_page.dart';
 import 'package:atlas/core/home/bloc/home_bloc.dart';
 import 'package:atlas/core/home/views/home.dart';
 import 'package:atlas/core/splash/bloc/splash_bloc.dart';
@@ -45,6 +46,14 @@ class AppRouter {
             child: LoginPage(),
           ),
         );
+      case '/smslogin':
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: _loginBloc,
+            child: SmsLoginPage(),
+          ),
+        );
+
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

@@ -19,12 +19,10 @@ class AtlasTextFormField extends StatelessWidget {
       child: TextFormField(
         controller: myController,
         keyboardType: textInputType,
-        style: TextStyle(fontSize: 18.0, color: Colors.deepPurple),
+        style: TextStyle(fontSize: 18.0),
         decoration: InputDecoration(
           hintText: hint,
-          hintStyle: TextStyle(color: Colors.grey),
           filled: true,
-          fillColor: Colors.white70,
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {

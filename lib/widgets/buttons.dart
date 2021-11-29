@@ -16,8 +16,6 @@ class AtlasElevatedButton extends StatelessWidget {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             elevation: 1.0,
-            primary: Colors.blueAccent,
-            onPrimary: Colors.white,
             minimumSize: const Size(200, 50),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
@@ -27,7 +25,10 @@ class AtlasElevatedButton extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Text(buttonTitle,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                )),
           ),
         ),
       ),

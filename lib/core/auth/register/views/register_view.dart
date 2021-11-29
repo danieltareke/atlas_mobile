@@ -1,3 +1,4 @@
+import 'package:atlas/core/auth/widgets/user_agreement_button.dart';
 import 'package:atlas/widgets/buttons.dart';
 import 'package:atlas/widgets/password_form_field.dart';
 import 'package:atlas/widgets/phone_selector.dart';
@@ -37,69 +38,55 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form(
-        key: _formKey,
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(20, 20, 20, 5),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Sign Up',
-                  style: GoogleFonts.lato(
-                    textStyle: TextStyle(color: Colors.blueAccent),
-                    fontSize: 36,
-                    fontWeight: FontWeight.w700,
-                    fontStyle: FontStyle.normal,
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                _fullNameField(),
-                _sizedBoxVertical(),
-                _phoneNumberfield(),
-                _sizedBoxVertical(),
-                _emailField(),
-                _sizedBoxVertical(),
-                _passwordField(),
-                _sizedBoxVertical(),
-                _passwordConfirmField(),
-                _sizedBoxVertical(),
-                _sizedBoxVertical(),
-                _signUpButton(),
-                _sizedBoxVertical(),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    primary: Colors.blue,
-                  ),
-                  onPressed: () {},
-                  child: Text('Login with a password'),
-                ),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    primary: Colors.blue,
-                  ),
-                  onPressed: () {},
-                  child: Text('Login with SMS verification code'),
-                ),
-                _sizedBoxVertical(),
-                _sizedBoxVertical(),
-                _sizedBoxVertical(),
-                Text(
-                    'Click "Sign Up" to indicate that you have read and agreed to the below policy'),
-                Center(
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      primary: Colors.blue,
+      body: SafeArea(
+        child: Form(
+          key: _formKey,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(20, 20, 20, 5),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Sign Up',
+                    style: TextStyle(
+                      fontSize: 36,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.normal,
                     ),
-                    onPressed: () {},
-                    child: Text('Terms of service and privacy policy'),
                   ),
-                )
-              ],
+                  SizedBox(
+                    height: 20,
+                  ),
+                  _fullNameField(),
+                  _sizedBoxVertical(),
+                  _phoneNumberfield(),
+                  _sizedBoxVertical(),
+                  _emailField(),
+                  _sizedBoxVertical(),
+                  _passwordField(),
+                  _sizedBoxVertical(),
+                  _passwordConfirmField(),
+                  _sizedBoxVertical(),
+                  _sizedBoxVertical(),
+                  _signUpButton(),
+                  _sizedBoxVertical(),
+                  TextButton(
+                    onPressed: () => {Navigator.pushNamed(context, '/login')},
+                    child: Text('Sign In with a password'),
+                  ),
+                  TextButton(
+                    onPressed: () =>
+                        {Navigator.pushNamed(context, '/smslogin')},
+                    child: Text('Sign In with SMS verification code'),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  UserAgreementButton(msg: 'Sign Up')
+                ],
+              ),
             ),
           ),
         ),

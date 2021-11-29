@@ -20,9 +20,7 @@ class AtlasPhoneSelector extends StatelessWidget {
       child: IntlPhoneField(
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey),
           filled: true,
-          fillColor: Colors.white70,
         ),
         initialCountryCode: initialCountry,
         onChanged: onChange,

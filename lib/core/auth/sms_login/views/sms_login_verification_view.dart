@@ -1,22 +1,21 @@
 import 'package:atlas/core/auth/widgets/user_agreement_button.dart';
 import 'package:atlas/widgets/buttons.dart';
-import 'package:atlas/widgets/password_form_field.dart';
 import 'package:atlas/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+class SmsVerificationView extends StatefulWidget {
+  final String phoneNum;
+  SmsVerificationView({Key? key, required this.phoneNum}) : super(key: key);
 
   @override
-  _LoginViewState createState() => _LoginViewState();
+  _SmsVerificationViewState createState() => _SmsVerificationViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _SmsVerificationViewState extends State<SmsVerificationView> {
   final _formKey = GlobalKey<FormState>();
-  final userController = TextEditingController();
-  final passwordController = TextEditingController();
+  final phoneController = TextEditingController();
+  final verificationCodeController = TextEditingController();
 
   @override
   void initState() {
@@ -32,7 +31,7 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Sign In',
+          'Verify',
         ),
       ),
       body: SafeArea(
@@ -46,31 +45,35 @@ class _LoginViewState extends State<LoginView> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
-                  Text(
-                    'Sign In with a password',
-                    style: TextStyle(fontWeight: FontWeight.w300, fontSize: 18),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    child: Text(
+                      'Please type the verification code we sent you to ' +
+                          widget.phoneNum,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 18,
+                          height: 1.5),
+                    ),
                   ),
                   SizedBox(
-                    height: 100,
+                    height: 90,
                   ),
-                  _userNameField(),
-                  _sizedBoxVertical(),
-                  _passwordField(),
+                  _verificationCodeField(),
                   _sizedBoxVertical(),
                   _sizedBoxVertical(),
-                  _signInButton(),
+                  _confirmButton(),
                   _sizedBoxVertical(),
                   TextButton(
-                    onPressed: () =>
-                        {Navigator.pushNamed(context, '/smslogin')},
-                    child: Text('Sign In with SMS verification code'),
+                    onPressed: () {},
+                    child: Text('Resend'),
                   ),
                   SizedBox(
-                    height: 40,
+                    height: 70,
                   ),
-                  UserAgreementButton(msg: 'Sign In')
+                  UserAgreementButton(msg: 'Verify')
                 ],
               ),
             ),
@@ -84,26 +87,17 @@ class _LoginViewState extends State<LoginView> {
     return SizedBox(height: 10);
   }
 
-  Widget _userNameField() {
+  Widget _verificationCodeField() {
     return AtlasTextFormField(
-      myController: userController,
-      hint: "Phone/ID/Email",
-      textInputType: TextInputType.name,
+      myController: verificationCodeController,
+      hint: "Code",
+      textInputType: TextInputType.number,
     );
   }
 
-  Widget _passwordField() {
-    return AtlasPasswordFormField(
-      myController: passwordController,
-      hint: "Password",
-      obscureText: true,
-      textInputType: TextInputType.visiblePassword,
-    );
-  }
-
-  Widget _signInButton() {
+  Widget _confirmButton() {
     return AtlasElevatedButton(
-      buttonTitle: "Sign In",
+      buttonTitle: "Verify",
       onSubmit: () {
         // Validate returns true if the form is valid, or false otherwise.
         if (_formKey.currentState!.validate()) {
@@ -119,9 +113,9 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   void dispose() {
-    userController.dispose();
-    passwordController.dispose();
-    userController.dispose();
+    phoneController.dispose();
+    verificationCodeController.dispose();
+    phoneController.dispose();
     super.dispose();
   }
 }
